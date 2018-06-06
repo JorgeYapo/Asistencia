@@ -10,7 +10,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 /**
- * Created by Docente on 12/02/2018.
+ * Update by Yapo on 05/06/2018;
  */
 
 public interface UsuarioServices {
@@ -19,4 +19,5 @@ public interface UsuarioServices {
 
     @POST("/EventoUPeU/user/add")
     Call<UsuarioTO>  guardarUsuario(@Body UsuarioTO usuario);
+
 }

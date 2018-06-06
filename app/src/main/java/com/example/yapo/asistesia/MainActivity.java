@@ -1,5 +1,6 @@
 package com.example.yapo.asistesia;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,82 +38,49 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         usuario = (EditText)findViewById(R.id.txtuser);
-        password = (EditText)findViewById(R.id.txtpass);
+        password = (EditText)findViewById(R.id.txtpassword);
         btnlogin = (Button) findViewById(R.id.btnlogin);
 
+        btnlogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v ) {
+                String user = usuario.getText().toString();
+                String pas = password.getText().toString();
+                Toast.makeText(MainActivity.this, "Hola "+user+" +++ "+ pas, Toast.LENGTH_SHORT).show();
+                validar(v,user,pas);
 
-        initView();
-        retrofit=new Retrofit.Builder()
-                .baseUrl("http://192.168.1.33:8080/") // Colocar la direccion ip del servicio rest
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-        usuarioServis=retrofit.create(UsuarioServices.class);
-        listarUsuariox(usuarioServis);
+            }
+        });
     }
 
-    private void initView(){
-        this.txtDni=(TextView)findViewById(R.id.txtDni);
-        this.txtUsuario=(TextView)findViewById(R.id.txtUsuario);
-        this.txtNombres=(TextView)findViewById(R.id.txtNombre);
-        this.txtApellidos=(TextView)findViewById(R.id.txtApellidos);
-    }
 
-    public void onRegistrarUser(View view){
+    public void validar(View view, String usuario, String passwprd){
         retrofit=new Retrofit.Builder()
-                .baseUrl("http://192.168.1.33:8080/") // Colocar la direccion ip del servicio rest
+                .baseUrl("http://192.168.1.33:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         usuarioServis=retrofit.create(UsuarioServices.class);
         UsuarioTO user=new UsuarioTO();
-        user.setIdUsuario(new Integer(8));
-        user.setUsuario("roberto");
-        user.setNombres("Juan");
-        user.setApellidos("Ramos Quispe");
-        user.setClave("123456");
-        user.setDnicodigo("54872418");
-        user.setEmail("moisesmp@gmail.com");
-        user.setEstadousuario("1");
-        crearUsuario(usuarioServis, user);
-
-    }
-
-    private void crearUsuario(UsuarioServices userService, UsuarioTO user){
-        Call<UsuarioTO> call=userService.guardarUsuario(user);
+        user.setIdUsuario(new Integer(1));
+        user.setUsuario(usuario);
+        user.setClave(passwprd);
+        Call<UsuarioTO> call=usuarioServis.guardarUsuario(user);
         call.enqueue(new Callback<UsuarioTO>() {
             @Override
             public void onResponse(Call<UsuarioTO> call, Response<UsuarioTO> response) {
-                // mostrarUsuarios(response.body());
+                Toast.makeText(MainActivity.this, "Bienvenido al sistema ", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent().setClass(MainActivity.this,Mapas.class));
             }
 
             @Override
             public void onFailure(Call<UsuarioTO> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"No se puede crear Usuario", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"El usuario o la contraseña con incorrectos", Toast.LENGTH_SHORT).show();
                 Log.e(TAG, t.toString());
             }
         });
+
     }
 
-    private void listarUsuariox(UsuarioServices usuarioServis){
-        Call<List<UsuarioTO>> listarUsuarioTodos=usuarioServis.listarUsuario();
-        listarUsuarioTodos.enqueue(new Callback<List<UsuarioTO>>() {
-            @Override
-            public void onResponse(Call<List<UsuarioTO>> call, Response<List<UsuarioTO>> response) {
-                mostrarUsuarios(response.body().get(0));
-                Log.e(TAG,"Llego.......!"+response.body().size());
-            }
 
-            @Override
-            public void onFailure(Call<List<UsuarioTO>> call, Throwable t) {
-                Log.e(TAG,"Error al recuperar el Servicio Rest de Usuario!");
-            }
-        });
-    }
-
-    private void mostrarUsuarios(UsuarioTO usuario){
-        txtDni.setText(usuario.getDnicodigo().toString());
-        txtUsuario.setText(usuario.getUsuario().toString());
-        txtNombres.setText(usuario.getNombres().toString());
-        txtApellidos.setText(usuario.getApellidos().toString());
-    }
 
 }

@@ -1,7 +1,7 @@
 package com.example.yapo.asistesia.to;
 
 /**
- * Created by Docente on 14/02/2018.
+ * Update by Yapo on 05/06/2018;
  */
 
 public class EventoTO {
