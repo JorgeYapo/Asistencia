@@ -6,6 +6,7 @@ package jlyv.upeu.edu.pe.googlemaps.servis;
 
 import java.util.List;
 
+import jlyv.upeu.edu.pe.googlemaps.to.AsistenciaTO;
 import jlyv.upeu.edu.pe.googlemaps.to.EventoTO;
 import jlyv.upeu.edu.pe.googlemaps.to.UsuarioTO;
 import retrofit2.Call;
@@ -23,6 +24,9 @@ public interface UsuarioServices {
 
     @GET("/EventoUPeU/event/all")
     Call<List<EventoTO>> listarEvento();
+
+    @GET("/EventoUPeU/asistencia/all")
+    Call<List<AsistenciaTO>> listarAsistencia();
 
     @POST("/EventoUPeU/user/add")
     Call<UsuarioTO>  guardarUsuario(@Body UsuarioTO usuario);

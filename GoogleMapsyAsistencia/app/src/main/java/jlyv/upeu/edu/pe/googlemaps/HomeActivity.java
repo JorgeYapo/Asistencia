@@ -17,6 +17,7 @@ import android.view.MenuItem;
 
 import jlyv.upeu.edu.pe.googlemaps.drawnavrecyclerview.AsistenciaFragment;
 import jlyv.upeu.edu.pe.googlemaps.drawnavrecyclerview.MapsActivity;
+import jlyv.upeu.edu.pe.googlemaps.drawnavrecyclerview.RepAs;
 import jlyv.upeu.edu.pe.googlemaps.drawnavrecyclerview.ReporteFragment;
 
 public class HomeActivity extends AppCompatActivity
@@ -93,11 +94,11 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_registrar) {
             fragmenteManager.beginTransaction().replace(R.id.contenedor, new AsistenciaFragment()).commit();
         } else if (id == R.id.list_asis) {
+            fragmenteManager.beginTransaction().replace(R.id.contenedor, new RepAs()).commit();
+        } else if (id == R.id.nav_map) {
             Intent inte=new Intent();
             inte.setClass(this, MapsActivity.class);
             startActivity(inte);
-        } else if (id == R.id.nav_map) {
-
         } else if (id == R.id.nav_config) {
 
         } else if (id == R.id.nav_exit) {

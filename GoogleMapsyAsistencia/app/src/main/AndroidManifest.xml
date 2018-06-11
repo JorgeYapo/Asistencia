@@ -24,8 +24,7 @@
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme"></activity>
-
+            android:theme="@style/AppTheme" />
         <activity android:name=".drawnavrecyclerview.SimpleScannerActivity" />
 
         <meta-data
@@ -45,7 +44,11 @@
 
         <activity
             android:name=".drawnavrecyclerview.MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
+        <activity
+            android:name=".drawnavrecyclerview.RepAs"
+            android:label="@string/title_activity_rep_as"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
