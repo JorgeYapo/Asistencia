@@ -11,8 +11,8 @@ public class AsistenciaTO {
     String fechahora;
     String ofline;
 
-    String nombreusuario;
-    String nombreevento;
+    UsuarioTO nombreusuario;
+    EventoTO nombreevento;
 
     public int getIdAsistencia() {
         return idAsistencia;
