@@ -29,9 +29,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ReporteFragment extends Fragment {
     private EventoDao dao;
     List<EventoTO> evento;
-    private RecyclerView recyclerView;
-    private RecyclerView.Adapter<EventoAdapter.EventoViewHolder> adapter;
-    private RecyclerView.LayoutManager layoutManager;
+    RecyclerView recyclerView;
+    RecyclerView.Adapter<EventoAdapter.EventoViewHolder> adapter;
+    RecyclerView.LayoutManager layoutManager;
     public final String TAG=this.getClass().getSimpleName();
     Retrofit retrofit;
     UsuarioServices usuarioServis;
@@ -49,7 +49,7 @@ public class ReporteFragment extends Fragment {
 
         // Rest
         retrofit=new Retrofit.Builder()
-                .baseUrl("http://192.168.1.36:8080/")
+                .baseUrl("http://192.168.1.33:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         usuarioServis=retrofit.create(UsuarioServices.class);
@@ -57,24 +57,26 @@ public class ReporteFragment extends Fragment {
         listarEventoTodos.enqueue(new Callback<List<EventoTO>>() {
             @Override
             public void onResponse(Call<List<EventoTO>> call, Response<List<EventoTO>> response) {
-                evento = (List<EventoTO>)response.body();
+
+                evento = response.body();
+                adapter=new EventoAdapter(evento);
+                recyclerView.setLayoutManager(layoutManager);
+                recyclerView.setAdapter(adapter);
                 Toast.makeText(getContext(), "Llego.......!", Toast.LENGTH_SHORT).show();
-//                Log.e(TAG,"Llego.......!"+response.body().size());
             }
 
             @Override
             public void onFailure(Call<List<EventoTO>> call, Throwable t) {
                 Toast.makeText(getContext(), "Error al recuperar rest", Toast.LENGTH_SHORT).show();
-//                Log.e(TAG,"Error al recuperar el Servicio Rest de Usuario!");
             }
         });
 
 //        dao=new EventoDao(this.getContext());
 //        evento=dao.ListarEvento();
 //        Log.v("DMP", "Cantidad: "+evento.size());
-        this.adapter=new EventoAdapter(evento);
-        this.recyclerView.setLayoutManager(layoutManager);
-        this.recyclerView.setAdapter(adapter);
+//        this.adapter=new EventoAdapter(evento);
+//        this.recyclerView.setLayoutManager(layoutManager);
+//        this.recyclerView.setAdapter(adapter);
 
         return myFragmentView;
     }

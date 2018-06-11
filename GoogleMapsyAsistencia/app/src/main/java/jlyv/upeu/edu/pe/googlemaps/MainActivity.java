@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void validar(String usuario, String passwprd){
         retrofit=new Retrofit.Builder()
-                .baseUrl("http://192.168.1.36:8080/")
+                .baseUrl("http://192.168.1.33:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         usuarioServis=retrofit.create(UsuarioServices.class);
@@ -75,40 +75,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<UsuarioTO> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"El usuario o la contraseña con incorrectos", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"El usuario o la contraseña son incorrectos", Toast.LENGTH_SHORT).show();
                 Log.e(TAG, t.toString());
             }
         });
 
     }
-
-
-//    // pruebas
-//    private void initView(){
-//        this.txtDni=(TextView)findViewById(R.id.txtDni);
-//        this.txtUseres=(TextView)findViewById(R.id.txtUsere);
-//        this.txtNombres=(TextView)findViewById(R.id.txtNombre);
-//        this.txtApellidos=(TextView)findViewById(R.id.txtApellidos);
-//    }
-//    private void listarEventox(UsuarioServices usuarioServis){
-//        Call<List<EventoTO>> listarEventoTodos=usuarioServis.listarEvento();
-//        listarEventoTodos.enqueue(new Callback<List<EventoTO>>() {
-//            @Override
-//            public void onResponse(Call<List<EventoTO>> call, Response<List<EventoTO>> response) {
-//                mostrarUsuarios(response.body().get(0));
-//                Log.e(TAG,"Llego.......!"+response.body().size());
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<EventoTO>> call, Throwable t) {
-//                Log.e(TAG,"Error al recuperar el Servicio Rest de Usuario!");
-//            }
-//        });
-//    }
-//    private void mostrarUsuarios(EventoTO usuario){
-//            txtDni.setText(usuario.getNombreevento().toString());
-//        txtUseres.setText(usuario.getLugarevento().toString());
-//        txtNombres.setText(usuario.getFecha().toString());
-//        txtApellidos.setText(usuario.getHorainicio().toString());
-//    }
 }
