@@ -88,19 +88,19 @@ public class HomeActivity extends AppCompatActivity
 
         FragmentManager fragmenteManager=getSupportFragmentManager();
 
-        if (id == R.id.nav_reporte) {
+        if (id == R.id.list_event) {
             fragmenteManager.beginTransaction().replace(R.id.contenedor, new ReporteFragment()).commit();
         } else if (id == R.id.nav_registrar) {
             fragmenteManager.beginTransaction().replace(R.id.contenedor, new AsistenciaFragment()).commit();
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.list_asis) {
             Intent inte=new Intent();
             inte.setClass(this, MapsActivity.class);
             startActivity(inte);
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_map) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_config) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_exit) {
 
         }
 
