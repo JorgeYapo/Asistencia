@@ -33,14 +33,14 @@ public class AsistenciaAdapter extends RecyclerView.Adapter<AsistenciaAdapter.As
                 @Override
                 public void onClick(View v){
                     Context context=v.getContext();
-                    Toast.makeText(context,asistecia.getNombreevento(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,asistecia.getCompanhia(),Toast.LENGTH_SHORT).show();
                 }
             });
         }
 
         public void setEvento(AsistenciaTO asistecia){
             this.asistecia=asistecia;
-            this.txtNombre.setText(asistecia.getNombreevento());
+            this.txtNombre.setText(asistecia.getOfline());
             this.txtLugar.setText(asistecia.getCompanhia());
         }
 
