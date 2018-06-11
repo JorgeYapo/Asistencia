@@ -1,5 +1,7 @@
 package jlyv.upeu.edu.pe.googlemaps.to;
 
+import android.os.CpuUsageInfo;
+
 public class AsistenciaTO {
 
     int idAsistencia;
@@ -78,19 +80,19 @@ public class AsistenciaTO {
         this.ofline = ofline;
     }
 
-    public String getNombreusuario() {
+    public UsuarioTO getNombreusuario() {
         return nombreusuario;
     }
 
-    public void setNombreusuario(String nombreusuario) {
+    public void setNombreusuario(UsuarioTO nombreusuario) {
         this.nombreusuario = nombreusuario;
     }
 
-    public String getNombreevento() {
+    public EventoTO getNombreevento() {
         return nombreevento;
     }
 
-    public void setNombreevento(String nombreevento) {
+    public void setNombreevento(EventoTO nombreevento) {
         this.nombreevento = nombreevento;
     }
 }
