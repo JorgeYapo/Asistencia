@@ -50,7 +50,7 @@ public class AsistenciaDao extends DBConn {
             to.setCodigo(cur.getString(3));
             to.setNombres(cur.getString(4));
             to.setFechahora(cur.getString(6));
-            to.setNombreusuario(cur.getString(8));
+//            to.setNombreusuario(cur.getString(8));
             lista.add(to);
         }
 

@@ -12,9 +12,10 @@ public class AsistenciaTO {
     String companhia;
     String fechahora;
     String ofline;
+    UsuarioTO nombreusuario;
+    EventoTO nombreevento;
 
-    String nombreusuario;
-    String nombreevento;
+
 //    public String getNombreusuario() {
 //        return nombreusuario;
 //    }
@@ -97,19 +98,19 @@ public class AsistenciaTO {
         this.ofline = ofline;
     }
 
-//    public UsuarioTO getNombreusuario() {
-//        return nombreusuario;
-//    }
-//
-//    public void setNombreusuario(UsuarioTO nombreusuario) {
-//        this.nombreusuario = nombreusuario;
-//    }
-//
-//    public EventoTO getNombreevento() {
-//        return nombreevento;
-//    }
-//
-//    public void setNombreevento(EventoTO nombreevento) {
-//        this.nombreevento = nombreevento;
-//    }
+    public UsuarioTO getNombreusuario() {
+        return nombreusuario;
+    }
+
+    public void setNombreusuario(UsuarioTO nombreusuario) {
+        this.nombreusuario = nombreusuario;
+    }
+
+    public EventoTO getNombreevento() {
+        return nombreevento;
+    }
+
+    public void setNombreevento(EventoTO nombreevento) {
+        this.nombreevento = nombreevento;
+    }
 }

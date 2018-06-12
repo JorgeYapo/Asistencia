@@ -61,12 +61,11 @@ public class ReporteFragment extends Fragment {
                 adapter=new EventoAdapter(evento);
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setAdapter(adapter);
-                Toast.makeText(getContext(), "Llego.......!", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<List<EventoTO>> call, Throwable t) {
-                Toast.makeText(getContext(), "Error al recuperar rest", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "No puede rescuperar los eventos", Toast.LENGTH_SHORT).show();
             }
         });
 

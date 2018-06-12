@@ -46,11 +46,6 @@ public class AsistenciaAdapter extends RecyclerView.Adapter<AsistenciaAdapter.As
 
     }
 
-
-
-
-
-
     public AsistenciaAdapter(List<AsistenciaTO> asistencia){
         this.asistencia=asistencia;
     }
